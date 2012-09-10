@@ -10,17 +10,20 @@ L_BF_encrypt_begin:
 	pushl	%edi
 
 	# Load the 2 words
+
 	movl	20(%esp),%eax
 	movl	(%eax),%ecx
 	movl	4(%eax),%edx
 
 	# P pointer, s and enc flag
+
 	movl	24(%esp),%edi
 	xorl	%eax,%eax
 	xorl	%ebx,%ebx
 	xorl	(%edi),%ecx
 
 	# Round 0
+
 	rorl	$16,%ecx
 	movl	4(%edi),%esi
 	movb	%ch,%al
@@ -40,6 +43,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 1
+
 	rorl	$16,%edx
 	movl	8(%edi),%esi
 	movb	%dh,%al
@@ -59,6 +63,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 2
+
 	rorl	$16,%ecx
 	movl	12(%edi),%esi
 	movb	%ch,%al
@@ -78,6 +83,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 3
+
 	rorl	$16,%edx
 	movl	16(%edi),%esi
 	movb	%dh,%al
@@ -97,6 +103,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 4
+
 	rorl	$16,%ecx
 	movl	20(%edi),%esi
 	movb	%ch,%al
@@ -116,6 +123,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 5
+
 	rorl	$16,%edx
 	movl	24(%edi),%esi
 	movb	%dh,%al
@@ -135,6 +143,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 6
+
 	rorl	$16,%ecx
 	movl	28(%edi),%esi
 	movb	%ch,%al
@@ -154,6 +163,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 7
+
 	rorl	$16,%edx
 	movl	32(%edi),%esi
 	movb	%dh,%al
@@ -173,6 +183,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 8
+
 	rorl	$16,%ecx
 	movl	36(%edi),%esi
 	movb	%ch,%al
@@ -192,6 +203,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 9
+
 	rorl	$16,%edx
 	movl	40(%edi),%esi
 	movb	%dh,%al
@@ -211,6 +223,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 10
+
 	rorl	$16,%ecx
 	movl	44(%edi),%esi
 	movb	%ch,%al
@@ -230,6 +243,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 11
+
 	rorl	$16,%edx
 	movl	48(%edi),%esi
 	movb	%dh,%al
@@ -249,6 +263,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 12
+
 	rorl	$16,%ecx
 	movl	52(%edi),%esi
 	movb	%ch,%al
@@ -268,6 +283,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 13
+
 	rorl	$16,%edx
 	movl	56(%edi),%esi
 	movb	%dh,%al
@@ -287,6 +303,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 14
+
 	rorl	$16,%ecx
 	movl	60(%edi),%esi
 	movb	%ch,%al
@@ -306,6 +323,7 @@ L_BF_encrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 15
+
 	rorl	$16,%edx
 	movl	64(%edi),%esi
 	movb	%dh,%al
@@ -342,17 +360,20 @@ L_BF_decrypt_begin:
 	pushl	%edi
 
 	# Load the 2 words
+
 	movl	20(%esp),%eax
 	movl	(%eax),%ecx
 	movl	4(%eax),%edx
 
 	# P pointer, s and enc flag
+
 	movl	24(%esp),%edi
 	xorl	%eax,%eax
 	xorl	%ebx,%ebx
 	xorl	68(%edi),%ecx
 
 	# Round 16
+
 	rorl	$16,%ecx
 	movl	64(%edi),%esi
 	movb	%ch,%al
@@ -372,6 +393,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 15
+
 	rorl	$16,%edx
 	movl	60(%edi),%esi
 	movb	%dh,%al
@@ -391,6 +413,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 14
+
 	rorl	$16,%ecx
 	movl	56(%edi),%esi
 	movb	%ch,%al
@@ -410,6 +433,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 13
+
 	rorl	$16,%edx
 	movl	52(%edi),%esi
 	movb	%dh,%al
@@ -429,6 +453,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 12
+
 	rorl	$16,%ecx
 	movl	48(%edi),%esi
 	movb	%ch,%al
@@ -448,6 +473,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 11
+
 	rorl	$16,%edx
 	movl	44(%edi),%esi
 	movb	%dh,%al
@@ -467,6 +493,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 10
+
 	rorl	$16,%ecx
 	movl	40(%edi),%esi
 	movb	%ch,%al
@@ -486,6 +513,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 9
+
 	rorl	$16,%edx
 	movl	36(%edi),%esi
 	movb	%dh,%al
@@ -505,6 +533,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 8
+
 	rorl	$16,%ecx
 	movl	32(%edi),%esi
 	movb	%ch,%al
@@ -524,6 +553,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 7
+
 	rorl	$16,%edx
 	movl	28(%edi),%esi
 	movb	%dh,%al
@@ -543,6 +573,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 6
+
 	rorl	$16,%ecx
 	movl	24(%edi),%esi
 	movb	%ch,%al
@@ -562,6 +593,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 5
+
 	rorl	$16,%edx
 	movl	20(%edi),%esi
 	movb	%dh,%al
@@ -581,6 +613,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 4
+
 	rorl	$16,%ecx
 	movl	16(%edi),%esi
 	movb	%ch,%al
@@ -600,6 +633,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 3
+
 	rorl	$16,%edx
 	movl	12(%edi),%esi
 	movb	%dh,%al
@@ -619,6 +653,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%ecx
 
 	# Round 2
+
 	rorl	$16,%ecx
 	movl	8(%edi),%esi
 	movb	%ch,%al
@@ -638,6 +673,7 @@ L_BF_decrypt_begin:
 	xorl	%esi,%edx
 
 	# Round 1
+
 	rorl	$16,%edx
 	movl	4(%edi),%esi
 	movb	%dh,%al
@@ -675,6 +711,7 @@ L_BF_cbc_encrypt_begin:
 	pushl	%edi
 	movl	28(%esp),%ebp
 	# getting iv ptr from parameter 4
+
 	movl	36(%esp),%ebx
 	movl	(%ebx),%esi
 	movl	4(%ebx),%edi
@@ -686,8 +723,10 @@ L_BF_cbc_encrypt_begin:
 	movl	36(%esp),%esi
 	movl	40(%esp),%edi
 	# getting encrypt flag from parameter 5
+
 	movl	56(%esp),%ecx
 	# get and push parameter 3
+
 	movl	48(%esp),%eax
 	pushl	%eax
 	pushl	%ebx

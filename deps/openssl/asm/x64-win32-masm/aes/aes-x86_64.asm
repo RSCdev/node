@@ -152,6 +152,7 @@ $L$enc_loop::
 	xor	ecx,r12d
 	xor	edx,r8d
 DB	0f3h,0c3h
+
 _x86_64_AES_encrypt	ENDP
 
 ALIGN	16
@@ -327,6 +328,7 @@ $L$enc_compact_done::
 	xor	ecx,DWORD PTR[8+r15]
 	xor	edx,DWORD PTR[12+r15]
 DB	0f3h,0c3h
+
 _x86_64_AES_encrypt_compact	ENDP
 PUBLIC	AES_encrypt
 
@@ -340,14 +342,12 @@ $L$SEH_begin_AES_encrypt::
 	mov	rsi,rdx
 	mov	rdx,r8
 
-
 	push	rbx
 	push	rbp
 	push	r12
 	push	r13
 	push	r14
 	push	r15
-
 
 	mov	r10,rsp
 	lea	rcx,QWORD PTR[((-63))+rdx]
@@ -374,7 +374,6 @@ $L$enc_prologue::
 	lea	rbp,QWORD PTR[r13*1+r15]
 	mov	QWORD PTR[rsp],r15
 	mov	QWORD PTR[8+rsp],rbp
-
 
 	lea	r14,QWORD PTR[(($L$AES_Te+2048))]
 	lea	rbp,QWORD PTR[768+rsp]
@@ -558,6 +557,7 @@ $L$dec_loop::
 	xor	ecx,r12d
 	xor	edx,r8d
 DB	0f3h,0c3h
+
 _x86_64_AES_decrypt	ENDP
 
 ALIGN	16
@@ -784,6 +784,7 @@ $L$dec_compact_done::
 	xor	ecx,DWORD PTR[8+r15]
 	xor	edx,DWORD PTR[12+r15]
 DB	0f3h,0c3h
+
 _x86_64_AES_decrypt_compact	ENDP
 PUBLIC	AES_decrypt
 
@@ -797,14 +798,12 @@ $L$SEH_begin_AES_decrypt::
 	mov	rsi,rdx
 	mov	rdx,r8
 
-
 	push	rbx
 	push	rbp
 	push	r12
 	push	r13
 	push	r14
 	push	r15
-
 
 	mov	r10,rsp
 	lea	rcx,QWORD PTR[((-63))+rdx]
@@ -875,7 +874,6 @@ $L$SEH_begin_AES_set_encrypt_key::
 	mov	rsi,rdx
 	mov	rdx,r8
 
-
 	push	rbx
 	push	rbp
 	push	r12
@@ -900,7 +898,6 @@ $L$enc_key_epilogue::
 	DB	0F3h,0C3h		;repret
 $L$SEH_end_AES_set_encrypt_key::
 AES_set_encrypt_key	ENDP
-
 
 ALIGN	16
 _x86_64_AES_set_encrypt_key	PROC PRIVATE
@@ -1139,6 +1136,7 @@ $L$badpointer::
 	mov	rax,-1
 $L$exit::
 DB	0f3h,0c3h
+
 _x86_64_AES_set_encrypt_key	ENDP
 PUBLIC	AES_set_decrypt_key
 
@@ -1151,7 +1149,6 @@ $L$SEH_begin_AES_set_decrypt_key::
 	mov	rdi,rcx
 	mov	rsi,rdx
 	mov	rdx,r8
-
 
 	push	rbx
 	push	rbp
@@ -1302,7 +1299,6 @@ $L$permute::
 	xor	ebx,r10d
 	xor	edx,r13d
 
-
 	shr	r8,32
 	shr	r11,32
 
@@ -1354,7 +1350,6 @@ $L$SEH_begin_AES_cbc_encrypt::
 	mov	rcx,r9
 	mov	r8,QWORD PTR[40+rsp]
 	mov	r9,QWORD PTR[48+rsp]
-
 
 	cmp	rdx,0
 	je	$L$cbc_epilogue
@@ -1441,6 +1436,7 @@ $L$cbc_do_ecopy::
 	lea	r15,QWORD PTR[80+rsp]
 	mov	ecx,240/8
 	DD	090A548F3h
+
 	mov	DWORD PTR[rdi],eax
 $L$cbc_skip_ecopy::
 	mov	QWORD PTR[rsp],r15
@@ -1459,7 +1455,6 @@ $L$cbc_prefetch_te::
 
 	cmp	rbx,0
 	je	$L$FAST_DECRYPT
-
 
 	mov	eax,DWORD PTR[rbp]
 	mov	ebx,DWORD PTR[4+rbp]
@@ -1497,7 +1492,6 @@ $L$cbc_fast_enc_loop::
 	mov	DWORD PTR[12+rbp],edx
 
 	jmp	$L$cbc_fast_cleanup
-
 
 ALIGN	16
 $L$FAST_DECRYPT::
@@ -1625,8 +1619,6 @@ $L$cbc_slow_prologue::
 $L$cbc_slow_body::
 
 
-
-
 	mov	QWORD PTR[56+rsp],r8
 	mov	rbp,r8
 	mov	rbx,r9
@@ -1641,7 +1633,6 @@ $L$cbc_slow_body::
 	lea	rax,QWORD PTR[rax*1+r15]
 	mov	QWORD PTR[8+rsp],rax
 
-
 	lea	r14,QWORD PTR[2048+r14]
 	lea	rax,QWORD PTR[((768-8))+rsp]
 	sub	rax,r14
@@ -1651,13 +1642,13 @@ $L$cbc_slow_body::
 	cmp	rbx,0
 	je	$L$SLOW_DECRYPT
 
-
 	test	r10,-16
 	mov	eax,DWORD PTR[rbp]
 	mov	ebx,DWORD PTR[4+rbp]
 	mov	ecx,DWORD PTR[8+rbp]
 	mov	edx,DWORD PTR[12+rbp]
 	jz	$L$cbc_slow_enc_tail
+
 
 ALIGN	4
 $L$cbc_slow_enc_loop::
@@ -1703,15 +1694,18 @@ $L$cbc_slow_enc_tail::
 	mov	rsi,r8
 	mov	rdi,r9
 	DD	09066A4F3h
+
 	mov	rcx,16
 	sub	rcx,r10
 	xor	rax,rax
 	DD	09066AAF3h
+
 	mov	r8,r9
 	mov	r10,16
 	mov	rax,r11
 	mov	rcx,r12
 	jmp	$L$cbc_slow_enc_loop
+
 
 ALIGN	16
 $L$SLOW_DECRYPT::
@@ -1788,6 +1782,7 @@ $L$cbc_slow_dec_partial::
 	lea	rsi,QWORD PTR[64+rsp]
 	lea	rcx,QWORD PTR[16+r10]
 	DD	09066A4F3h
+
 	jmp	$L$cbc_exit
 
 ALIGN	16
@@ -2656,7 +2651,6 @@ $L$in_block_prologue::
 	jmp	$L$common_seh_exit
 block_se_handler	ENDP
 
-
 ALIGN	16
 key_se_handler	PROC PRIVATE
 	push	rsi
@@ -2712,7 +2706,6 @@ $L$in_key_prologue::
 
 	jmp	$L$common_seh_exit
 key_se_handler	ENDP
-
 
 ALIGN	16
 cbc_se_handler	PROC PRIVATE
@@ -2790,6 +2783,7 @@ $L$common_seh_exit::
 	mov	ecx,154
 	DD	0a548f3fch
 
+
 	mov	rsi,r9
 	xor	rcx,rcx
 	mov	rdx,QWORD PTR[8+rsi]
@@ -2848,18 +2842,22 @@ $L$SEH_info_AES_encrypt::
 DB	9,0,0,0
 	DD	imagerel block_se_handler
 	DD	imagerel $L$enc_prologue,imagerel $L$enc_epilogue
+
 $L$SEH_info_AES_decrypt::
 DB	9,0,0,0
 	DD	imagerel block_se_handler
 	DD	imagerel $L$dec_prologue,imagerel $L$dec_epilogue
+
 $L$SEH_info_AES_set_encrypt_key::
 DB	9,0,0,0
 	DD	imagerel key_se_handler
 	DD	imagerel $L$enc_key_prologue,imagerel $L$enc_key_epilogue
+
 $L$SEH_info_AES_set_decrypt_key::
 DB	9,0,0,0
 	DD	imagerel key_se_handler
 	DD	imagerel $L$dec_key_prologue,imagerel $L$dec_key_epilogue
+
 $L$SEH_info_AES_cbc_encrypt::
 DB	9,0,0,0
 	DD	imagerel cbc_se_handler

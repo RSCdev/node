@@ -1,5 +1,6 @@
 .text
 
+
 .globl	_RC4
 
 .p2align	4
@@ -174,6 +175,7 @@ L$cloop8:
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	L$cmov0
+
 	movq	%r9,%r11
 L$cmov0:
 	addb	%r9b,%r13b
@@ -188,6 +190,7 @@ L$cmov0:
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	L$cmov1
+
 	movq	%r11,%r9
 L$cmov1:
 	addb	%r11b,%r13b
@@ -202,6 +205,7 @@ L$cmov1:
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	L$cmov2
+
 	movq	%r9,%r11
 L$cmov2:
 	addb	%r9b,%r13b
@@ -216,6 +220,7 @@ L$cmov2:
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	L$cmov3
+
 	movq	%r11,%r9
 L$cmov3:
 	addb	%r11b,%r13b
@@ -230,6 +235,7 @@ L$cmov3:
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	L$cmov4
+
 	movq	%r9,%r11
 L$cmov4:
 	addb	%r9b,%r13b
@@ -244,6 +250,7 @@ L$cmov4:
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	L$cmov5
+
 	movq	%r11,%r9
 L$cmov5:
 	addb	%r11b,%r13b
@@ -258,6 +265,7 @@ L$cmov5:
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	L$cmov6
+
 	movq	%r9,%r11
 L$cmov6:
 	addb	%r9b,%r13b
@@ -272,6 +280,7 @@ L$cmov6:
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	L$cmov7
+
 	movq	%r11,%r9
 L$cmov7:
 	addb	%r11b,%r13b

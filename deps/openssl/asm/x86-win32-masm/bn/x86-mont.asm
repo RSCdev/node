@@ -1,4 +1,4 @@
-TITLE	x86-mont.asm
+TITLE	../openssl/crypto/bn/asm/x86-mont.asm
 IF @Version LT 800
 ECHO MASM version 8.00 or later is strongly recommended.
 ENDIF

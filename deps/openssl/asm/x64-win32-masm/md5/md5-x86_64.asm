@@ -13,15 +13,12 @@ $L$SEH_begin_md5_block_asm_data_order::
 	mov	rsi,rdx
 	mov	rdx,r8
 
-
 	push	rbp
 	push	rbx
 	push	r12
 	push	r14
 	push	r15
 $L$prologue::
-
-
 
 
 	mov	rbp,rdi
@@ -31,11 +28,6 @@ $L$prologue::
 	mov	ebx,DWORD PTR[((1*4))+rbp]
 	mov	ecx,DWORD PTR[((2*4))+rbp]
 	mov	edx,DWORD PTR[((3*4))+rbp]
-
-
-
-
-
 
 
 	cmp	rsi,rdi
@@ -654,7 +646,6 @@ $L$loop::
 	add	ebx,r9d
 	add	ecx,r14d
 	add	edx,r15d
-
 
 	add	rsi,64
 	cmp	rsi,rdi

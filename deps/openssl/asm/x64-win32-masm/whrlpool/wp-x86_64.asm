@@ -13,7 +13,6 @@ $L$SEH_begin_whirlpool_block::
 	mov	rsi,rdx
 	mov	rdx,r8
 
-
 	push	rbx
 	push	rbp
 	push	r12
@@ -924,6 +923,7 @@ $L$in_prologue::
 	mov	rsi,r8
 	mov	ecx,154
 	DD	0a548f3fch
+
 
 	mov	rsi,r9
 	xor	rcx,rcx

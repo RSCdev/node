@@ -1,4 +1,4 @@
-.file	"x86.s"
+.file	"../openssl/crypto/bn/asm/x86.s"
 .text
 .globl	bn_mul_add_words
 .type	bn_mul_add_words,@function

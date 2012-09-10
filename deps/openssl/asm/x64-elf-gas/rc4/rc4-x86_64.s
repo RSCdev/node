@@ -1,5 +1,6 @@
 .text
 
+
 .globl	RC4
 .type	RC4,@function
 .align	16
@@ -174,6 +175,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	.Lcmov0
+
 	movq	%r9,%r11
 .Lcmov0:
 	addb	%r9b,%r13b
@@ -188,6 +190,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	.Lcmov1
+
 	movq	%r11,%r9
 .Lcmov1:
 	addb	%r11b,%r13b
@@ -202,6 +205,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	.Lcmov2
+
 	movq	%r9,%r11
 .Lcmov2:
 	addb	%r9b,%r13b
@@ -216,6 +220,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	.Lcmov3
+
 	movq	%r11,%r9
 .Lcmov3:
 	addb	%r11b,%r13b
@@ -230,6 +235,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	.Lcmov4
+
 	movq	%r9,%r11
 .Lcmov4:
 	addb	%r9b,%r13b
@@ -244,6 +250,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	.Lcmov5
+
 	movq	%r11,%r9
 .Lcmov5:
 	addb	%r11b,%r13b
@@ -258,6 +265,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r10,%r12
 	movb	%r13b,(%rdi,%r8,1)
 	jne	.Lcmov6
+
 	movq	%r9,%r11
 .Lcmov6:
 	addb	%r9b,%r13b
@@ -272,6 +280,7 @@ RC4:	orq	%rsi,%rsi
 	cmpq	%r8,%r12
 	movb	%r13b,(%rdi,%r10,1)
 	jne	.Lcmov7
+
 	movq	%r11,%r9
 .Lcmov7:
 	addb	%r11b,%r13b

@@ -1,4 +1,5 @@
 .text
+
 .type	_x86_64_AES_encrypt,@function
 .align	16
 _x86_64_AES_encrypt:
@@ -151,6 +152,7 @@ _x86_64_AES_encrypt:
 	xorl	%r12d,%ecx
 	xorl	%r8d,%edx
 .byte	0xf3,0xc3
+
 .size	_x86_64_AES_encrypt,.-_x86_64_AES_encrypt
 .type	_x86_64_AES_encrypt_compact,@function
 .align	16
@@ -326,6 +328,7 @@ _x86_64_AES_encrypt_compact:
 	xorl	8(%r15),%ecx
 	xorl	12(%r15),%edx
 .byte	0xf3,0xc3
+
 .size	_x86_64_AES_encrypt_compact,.-_x86_64_AES_encrypt_compact
 .globl	AES_encrypt
 .type	AES_encrypt,@function
@@ -545,6 +548,7 @@ _x86_64_AES_decrypt:
 	xorl	%r12d,%ecx
 	xorl	%r8d,%edx
 .byte	0xf3,0xc3
+
 .size	_x86_64_AES_decrypt,.-_x86_64_AES_decrypt
 .type	_x86_64_AES_decrypt_compact,@function
 .align	16
@@ -771,6 +775,7 @@ _x86_64_AES_decrypt_compact:
 	xorl	8(%r15),%ecx
 	xorl	12(%r15),%edx
 .byte	0xf3,0xc3
+
 .size	_x86_64_AES_decrypt_compact,.-_x86_64_AES_decrypt_compact
 .globl	AES_decrypt
 .type	AES_decrypt,@function
@@ -1102,6 +1107,7 @@ _x86_64_AES_set_encrypt_key:
 	movq	$-1,%rax
 .Lexit:
 .byte	0xf3,0xc3
+
 .size	_x86_64_AES_set_encrypt_key,.-_x86_64_AES_set_encrypt_key
 .globl	AES_set_decrypt_key
 .type	AES_set_decrypt_key,@function
@@ -1380,6 +1386,7 @@ AES_cbc_encrypt:
 	leaq	80(%rsp),%r15
 	movl	$30,%ecx
 .long	0x90A548F3
+
 	movl	%eax,(%rdi)
 .Lcbc_skip_ecopy:
 	movq	%r15,0(%rsp)
@@ -1543,6 +1550,7 @@ AES_cbc_encrypt:
 	xorq	%rax,%rax
 .long	0x90AB48F3
 
+
 	jmp	.Lcbc_exit
 
 
@@ -1598,6 +1606,7 @@ AES_cbc_encrypt:
 	movl	12(%rbp),%edx
 	jz	.Lcbc_slow_enc_tail
 
+
 .align	4
 .Lcbc_slow_enc_loop:
 	xorl	0(%r8),%eax
@@ -1642,15 +1651,18 @@ AES_cbc_encrypt:
 	movq	%r8,%rsi
 	movq	%r9,%rdi
 .long	0x9066A4F3
+
 	movq	$16,%rcx
 	subq	%r10,%rcx
 	xorq	%rax,%rax
 .long	0x9066AAF3
+
 	movq	%r9,%r8
 	movq	$16,%r10
 	movq	%r11,%rax
 	movq	%r12,%rcx
 	jmp	.Lcbc_slow_enc_loop
+
 
 .align	16
 .LSLOW_DECRYPT:
@@ -1727,6 +1739,7 @@ AES_cbc_encrypt:
 	leaq	64(%rsp),%rsi
 	leaq	16(%r10),%rcx
 .long	0x9066A4F3
+
 	jmp	.Lcbc_exit
 
 .align	16

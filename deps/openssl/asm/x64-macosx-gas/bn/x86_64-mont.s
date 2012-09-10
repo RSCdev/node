@@ -1,5 +1,6 @@
 .text
 
+
 .globl	_bn_mul_mont
 
 .p2align	4

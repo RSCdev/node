@@ -1,5 +1,6 @@
 .text
 
+
 .globl	bn_mul_mont
 .type	bn_mul_mont,@function
 .align	16

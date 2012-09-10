@@ -1,7 +1,6 @@
 OPTION	DOTNAME
 .text$	SEGMENT ALIGN(64) 'CODE'
 
-
 PUBLIC	Camellia_EncryptBlock
 
 ALIGN	16
@@ -27,14 +26,12 @@ $L$SEH_begin_Camellia_EncryptBlock_Rounds::
 	mov	rdx,r8
 	mov	rcx,r9
 
-
 	push	rbx
 	push	rbp
 	push	r13
 	push	r14
 	push	r15
 $L$enc_prologue::
-
 
 	mov	r13,rcx
 	mov	r14,rdx
@@ -75,7 +72,6 @@ $L$enc_epilogue::
 	DB	0F3h,0C3h		;repret
 $L$SEH_end_Camellia_EncryptBlock_Rounds::
 Camellia_EncryptBlock_Rounds	ENDP
-
 
 ALIGN	16
 _x86_64_Camellia_encrypt	PROC PRIVATE
@@ -281,8 +277,8 @@ $L$edone::
 	mov	r11d,edx
 
 DB	0f3h,0c3h
-_x86_64_Camellia_encrypt	ENDP
 
+_x86_64_Camellia_encrypt	ENDP
 
 PUBLIC	Camellia_DecryptBlock
 
@@ -309,14 +305,12 @@ $L$SEH_begin_Camellia_DecryptBlock_Rounds::
 	mov	rdx,r8
 	mov	rcx,r9
 
-
 	push	rbx
 	push	rbp
 	push	r13
 	push	r14
 	push	r15
 $L$dec_prologue::
-
 
 	mov	r13,rcx
 	mov	r15,rdx
@@ -357,7 +351,6 @@ $L$dec_epilogue::
 	DB	0F3h,0C3h		;repret
 $L$SEH_end_Camellia_DecryptBlock_Rounds::
 Camellia_DecryptBlock_Rounds	ENDP
-
 
 ALIGN	16
 _x86_64_Camellia_decrypt	PROC PRIVATE
@@ -564,6 +557,7 @@ $L$ddone::
 	mov	r11d,ebx
 
 DB	0f3h,0c3h
+
 _x86_64_Camellia_decrypt	ENDP
 PUBLIC	Camellia_Ekeygen
 
@@ -576,7 +570,6 @@ $L$SEH_begin_Camellia_Ekeygen::
 	mov	rdi,rcx
 	mov	rsi,rdx
 	mov	rdx,r8
-
 
 	push	rbx
 	push	rbp
@@ -1655,7 +1648,6 @@ $L$SEH_begin_Camellia_cbc_encrypt::
 	mov	r8,QWORD PTR[40+rsp]
 	mov	r9,QWORD PTR[48+rsp]
 
-
 	cmp	rdx,0
 	je	$L$cbc_abort
 	push	rbx
@@ -1669,8 +1661,6 @@ $L$cbc_prologue::
 	mov	rbp,rsp
 	sub	rsp,64
 	and	rsp,-64
-
-
 
 	lea	r10,QWORD PTR[((-64-63))+rcx]
 	sub	r10,rsp
@@ -1775,6 +1765,7 @@ $L$cbc_enc_pushf::
 	mov	rsi,r12
 	lea	rdi,QWORD PTR[((8+24))+rsp]
 	DD	09066A4F3h
+
 	popfq
 $L$cbc_enc_popf::
 
@@ -1782,6 +1773,7 @@ $L$cbc_enc_popf::
 	lea	rax,QWORD PTR[((16+24))+rsp]
 	mov	QWORD PTR[8+rsp],rax
 	jmp	$L$cbc_eloop
+
 
 ALIGN	16
 $L$CBC_DECRYPT::
@@ -1865,6 +1857,7 @@ $L$cbc_dec_pushf::
 	lea	rsi,QWORD PTR[((8+24))+rsp]
 	lea	rdi,QWORD PTR[r13]
 	DD	09066A4F3h
+
 	popfq
 $L$cbc_dec_popf::
 
@@ -1947,7 +1940,6 @@ $L$in_prologue::
 	jmp	$L$common_seh_exit
 common_se_handler	ENDP
 
-
 ALIGN	16
 cbc_se_handler	PROC PRIVATE
 	push	rsi
@@ -1977,7 +1969,6 @@ cbc_se_handler	PROC PRIVATE
 	lea	r10,QWORD PTR[$L$cbc_abort]
 	cmp	rbx,r10
 	jae	$L$in_cbc_prologue
-
 
 	lea	r10,QWORD PTR[$L$cbc_enc_pushf]
 	cmp	rbx,r10
@@ -2028,6 +2019,7 @@ $L$common_seh_exit::
 	mov	rsi,r8
 	mov	ecx,154
 	DD	0a548f3fch
+
 
 	mov	rsi,r9
 	xor	rcx,rcx
@@ -2083,14 +2075,17 @@ $L$SEH_info_Camellia_EncryptBlock_Rounds::
 DB	9,0,0,0
 	DD	imagerel common_se_handler
 	DD	imagerel $L$enc_prologue,imagerel $L$enc_epilogue
+
 $L$SEH_info_Camellia_DecryptBlock_Rounds::
 DB	9,0,0,0
 	DD	imagerel common_se_handler
 	DD	imagerel $L$dec_prologue,imagerel $L$dec_epilogue
+
 $L$SEH_info_Camellia_Ekeygen::
 DB	9,0,0,0
 	DD	imagerel common_se_handler
 	DD	imagerel $L$key_prologue,imagerel $L$key_epilogue
+
 $L$SEH_info_Camellia_cbc_encrypt::
 DB	9,0,0,0
 	DD	imagerel cbc_se_handler

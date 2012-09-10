@@ -1,4 +1,5 @@
 .text
+
 .globl	sha1_block_data_order
 .type	sha1_block_data_order,@function
 .align	16

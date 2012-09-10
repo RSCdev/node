@@ -14,6 +14,7 @@ ALIGN	16
 _RC5_32_encrypt	PROC PUBLIC
 $L_RC5_32_encrypt_begin::
 	;
+
 	push	ebp
 	push	esi
 	push	edi
@@ -203,6 +204,7 @@ ALIGN	16
 _RC5_32_decrypt	PROC PUBLIC
 $L_RC5_32_decrypt_begin::
 	;
+
 	push	ebp
 	push	esi
 	push	edi
@@ -394,6 +396,7 @@ ALIGN	16
 _RC5_32_cbc_encrypt	PROC PUBLIC
 $L_RC5_32_cbc_encrypt_begin::
 	;
+
 	push	ebp
 	push	ebx
 	push	esi

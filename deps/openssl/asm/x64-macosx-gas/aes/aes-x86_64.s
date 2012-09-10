@@ -1,5 +1,6 @@
 .text
 
+
 .p2align	4
 _x86_64_AES_encrypt:
 	xorl	0(%r15),%eax
@@ -151,6 +152,7 @@ L$enc_loop:
 	xorl	%r12d,%ecx
 	xorl	%r8d,%edx
 .byte	0xf3,0xc3
+
 
 
 .p2align	4
@@ -326,6 +328,7 @@ L$enc_compact_done:
 	xorl	8(%r15),%ecx
 	xorl	12(%r15),%edx
 .byte	0xf3,0xc3
+
 
 .globl	_AES_encrypt
 
@@ -545,6 +548,7 @@ L$dec_loop:
 	xorl	%r12d,%ecx
 	xorl	%r8d,%edx
 .byte	0xf3,0xc3
+
 
 
 .p2align	4
@@ -771,6 +775,7 @@ L$dec_compact_done:
 	xorl	8(%r15),%ecx
 	xorl	12(%r15),%edx
 .byte	0xf3,0xc3
+
 
 .globl	_AES_decrypt
 
@@ -1103,6 +1108,7 @@ L$badpointer:
 L$exit:
 .byte	0xf3,0xc3
 
+
 .globl	_AES_set_decrypt_key
 
 .p2align	4
@@ -1380,6 +1386,7 @@ L$cbc_do_ecopy:
 	leaq	80(%rsp),%r15
 	movl	$30,%ecx
 .long	0x90A548F3
+
 	movl	%eax,(%rdi)
 L$cbc_skip_ecopy:
 	movq	%r15,0(%rsp)
@@ -1543,6 +1550,7 @@ L$cbc_fast_cleanup:
 	xorq	%rax,%rax
 .long	0x90AB48F3
 
+
 	jmp	L$cbc_exit
 
 
@@ -1598,6 +1606,7 @@ L$cbc_slow_body:
 	movl	12(%rbp),%edx
 	jz	L$cbc_slow_enc_tail
 
+
 .p2align	2
 L$cbc_slow_enc_loop:
 	xorl	0(%r8),%eax
@@ -1642,15 +1651,18 @@ L$cbc_slow_enc_tail:
 	movq	%r8,%rsi
 	movq	%r9,%rdi
 .long	0x9066A4F3
+
 	movq	$16,%rcx
 	subq	%r10,%rcx
 	xorq	%rax,%rax
 .long	0x9066AAF3
+
 	movq	%r9,%r8
 	movq	$16,%r10
 	movq	%r11,%rax
 	movq	%r12,%rcx
 	jmp	L$cbc_slow_enc_loop
+
 
 .p2align	4
 L$SLOW_DECRYPT:
@@ -1727,6 +1739,7 @@ L$cbc_slow_dec_partial:
 	leaq	64(%rsp),%rsi
 	leaq	16(%r10),%rcx
 .long	0x9066A4F3
+
 	jmp	L$cbc_exit
 
 .p2align	4

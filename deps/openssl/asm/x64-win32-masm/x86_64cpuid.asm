@@ -13,10 +13,12 @@ OPENSSL_atomic_add	PROC PUBLIC
 	mov	eax,DWORD PTR[rcx]
 $L$spin::	lea	r8,QWORD PTR[rax*1+rdx]
 DB	0f0h
+
 	cmpxchg	DWORD PTR[rcx],r8d
 	jne	$L$spin
 	mov	eax,r8d
 DB	048h,098h
+
 	DB	0F3h,0C3h		;repret
 OPENSSL_atomic_add	ENDP
 
@@ -62,7 +64,6 @@ OPENSSL_ia32_cpuid	PROC PUBLIC
 	setne	al
 	or	r10d,eax
 	jnz	$L$intel
-
 
 	mov	eax,080000000h
 	cpuid

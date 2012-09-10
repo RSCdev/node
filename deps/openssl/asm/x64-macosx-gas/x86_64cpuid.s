@@ -5,6 +5,7 @@
 
 .text
 
+
 .globl	_OPENSSL_atomic_add
 
 .p2align	4
@@ -12,10 +13,12 @@ _OPENSSL_atomic_add:
 	movl	(%rdi),%eax
 L$spin:	leaq	(%rsi,%rax,1),%r8
 .byte	0xf0
+
 	cmpxchgl	%r8d,(%rdi)
 	jne	L$spin
 	movl	%r8d,%eax
 .byte	0x48,0x98
+
 	.byte	0xf3,0xc3
 
 

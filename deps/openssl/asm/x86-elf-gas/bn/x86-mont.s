@@ -1,4 +1,4 @@
-.file	"x86-mont.s"
+.file	"../openssl/crypto/bn/asm/x86-mont.s"
 .text
 .globl	bn_mul_mont
 .type	bn_mul_mont,@function

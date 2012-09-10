@@ -1,5 +1,6 @@
 .text
 
+
 .globl	_sha256_block_data_order
 
 .p2align	4

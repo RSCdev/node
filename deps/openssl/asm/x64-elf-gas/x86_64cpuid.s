@@ -4,6 +4,7 @@
 
 .text
 
+
 .globl	OPENSSL_atomic_add
 .type	OPENSSL_atomic_add,@function
 .align	16
@@ -11,10 +12,12 @@ OPENSSL_atomic_add:
 	movl	(%rdi),%eax
 .Lspin:	leaq	(%rsi,%rax,1),%r8
 .byte	0xf0
+
 	cmpxchgl	%r8d,(%rdi)
 	jne	.Lspin
 	movl	%r8d,%eax
 .byte	0x48,0x98
+
 	.byte	0xf3,0xc3
 .size	OPENSSL_atomic_add,.-OPENSSL_atomic_add
 

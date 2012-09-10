@@ -1,4 +1,4 @@
-TITLE	x86.asm
+TITLE	../openssl/crypto/bn/asm/x86.asm
 IF @Version LT 800
 ECHO MASM version 8.00 or later is strongly recommended.
 ENDIF
@@ -18,6 +18,7 @@ $L_bn_mul_add_words_begin::
 	push	esi
 	push	edi
 	;
+
 	xor	esi,esi
 	mov	edi,DWORD PTR 20[esp]
 	mov	ecx,DWORD PTR 28[esp]
@@ -109,6 +110,7 @@ $L001maw_loop:
 	mov	DWORD PTR 28[edi],eax
 	mov	esi,edx
 	;
+
 	mov	ecx,DWORD PTR [esp]
 	add	ebx,32
 	add	edi,32
@@ -219,6 +221,7 @@ $L_bn_mul_words_begin::
 	push	esi
 	push	edi
 	;
+
 	xor	esi,esi
 	mov	edi,DWORD PTR 20[esp]
 	mov	ebx,DWORD PTR 24[esp]
@@ -284,6 +287,7 @@ $L005mw_loop:
 	mov	DWORD PTR 28[edi],eax
 	mov	esi,edx
 	;
+
 	add	ebx,32
 	add	edi,32
 	sub	ebp,8
@@ -372,6 +376,7 @@ $L_bn_sqr_words_begin::
 	push	esi
 	push	edi
 	;
+
 	mov	esi,DWORD PTR 20[esp]
 	mov	edi,DWORD PTR 24[esp]
 	mov	ebx,DWORD PTR 28[esp]
@@ -419,6 +424,7 @@ $L009sw_loop:
 	mov	DWORD PTR 56[esi],eax
 	mov	DWORD PTR 60[esi],edx
 	;
+
 	add	edi,32
 	add	esi,64
 	sub	ebx,8
@@ -506,6 +512,7 @@ $L_bn_add_words_begin::
 	push	esi
 	push	edi
 	;
+
 	mov	ebx,DWORD PTR 20[esp]
 	mov	esi,DWORD PTR 24[esp]
 	mov	edi,DWORD PTR 28[esp]
@@ -587,6 +594,7 @@ $L012aw_loop:
 	adc	eax,0
 	mov	DWORD PTR 28[ebx],ecx
 	;
+
 	add	esi,32
 	add	edi,32
 	add	ebx,32
@@ -686,6 +694,7 @@ $L_bn_sub_words_begin::
 	push	esi
 	push	edi
 	;
+
 	mov	ebx,DWORD PTR 20[esp]
 	mov	esi,DWORD PTR 24[esp]
 	mov	edi,DWORD PTR 28[esp]
@@ -767,6 +776,7 @@ $L015aw_loop:
 	adc	eax,0
 	mov	DWORD PTR 28[ebx],ecx
 	;
+
 	add	esi,32
 	add	edi,32
 	add	ebx,32

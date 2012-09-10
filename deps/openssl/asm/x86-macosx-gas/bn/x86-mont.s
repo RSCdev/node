@@ -1,4 +1,4 @@
-.file	"x86-mont.s"
+.file	"../openssl/crypto/bn/asm/x86-mont.s"
 .text
 .globl	_bn_mul_mont
 .align	4

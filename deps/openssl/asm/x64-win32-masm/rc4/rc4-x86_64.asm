@@ -187,6 +187,7 @@ $L$cloop8::
 	cmp	r12,r10
 	mov	BYTE PTR[r8*1+rdi],r13b
 	jne	$L$cmov0
+
 	mov	r11,r9
 $L$cmov0::
 	add	r13b,r9b
@@ -201,6 +202,7 @@ $L$cmov0::
 	cmp	r12,r8
 	mov	BYTE PTR[r10*1+rdi],r13b
 	jne	$L$cmov1
+
 	mov	r9,r11
 $L$cmov1::
 	add	r13b,r11b
@@ -215,6 +217,7 @@ $L$cmov1::
 	cmp	r12,r10
 	mov	BYTE PTR[r8*1+rdi],r13b
 	jne	$L$cmov2
+
 	mov	r11,r9
 $L$cmov2::
 	add	r13b,r9b
@@ -229,6 +232,7 @@ $L$cmov2::
 	cmp	r12,r8
 	mov	BYTE PTR[r10*1+rdi],r13b
 	jne	$L$cmov3
+
 	mov	r9,r11
 $L$cmov3::
 	add	r13b,r11b
@@ -243,6 +247,7 @@ $L$cmov3::
 	cmp	r12,r10
 	mov	BYTE PTR[r8*1+rdi],r13b
 	jne	$L$cmov4
+
 	mov	r11,r9
 $L$cmov4::
 	add	r13b,r9b
@@ -257,6 +262,7 @@ $L$cmov4::
 	cmp	r12,r8
 	mov	BYTE PTR[r10*1+rdi],r13b
 	jne	$L$cmov5
+
 	mov	r9,r11
 $L$cmov5::
 	add	r13b,r11b
@@ -271,6 +277,7 @@ $L$cmov5::
 	cmp	r12,r10
 	mov	BYTE PTR[r8*1+rdi],r13b
 	jne	$L$cmov6
+
 	mov	r11,r9
 $L$cmov6::
 	add	r13b,r9b
@@ -285,6 +292,7 @@ $L$cmov6::
 	cmp	r12,r8
 	mov	BYTE PTR[r10*1+rdi],r13b
 	jne	$L$cmov7
+
 	mov	r9,r11
 $L$cmov7::
 	add	r13b,r11b
@@ -496,7 +504,6 @@ $L$in_prologue::
 
 	jmp	$L$common_seh_exit
 stream_se_handler	ENDP
-
 
 ALIGN	16
 key_se_handler	PROC PRIVATE
